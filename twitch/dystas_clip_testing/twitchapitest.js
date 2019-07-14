@@ -12,8 +12,9 @@ var api_suffix_vods = "videos";
 var auth_client_token = "";
 
 function initialize(){
-  if(document.location.hash !== "" && document.location.hash.split('=') === "#access_token"){
+  if(document.location.hash !== "" && document.location.hash.split('=')[0] === "#access_token"){
     auth_client_token = document.location.hash.split('&')[0].split('=')[1];
+    getClipData();
   }else{
     authorize_client();
   }
@@ -42,6 +43,7 @@ function getClipData(){
       if(uxhr.readyState === 4){
         if(uxhr.status === 200){
           console.log(xhr.responseText);
+          //console.log(xhr.response);
           //console.log(xhr);
         }else{
           console.log("status: " + uxhr.status);
