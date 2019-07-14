@@ -82,8 +82,8 @@ function getClips(streamerIDs){
   xhr.open('GET', "https://api.twitch.tv/helix/clips?broadcaster_id=195166073");
   xhr.setRequestHeader("Client-ID", auth_clientID);
   xhr.onreadystatechange = function(){
-    if(xxhr.readyState === 4){
-      if(xxhr.status === 200){
+    if(xhr.readyState === 4){
+      if(xhr.status === 200){
         last_response = xhr;
         console.log(JSON.parse(xhr.responseText));
       }else{
