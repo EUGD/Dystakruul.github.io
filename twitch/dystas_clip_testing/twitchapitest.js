@@ -12,10 +12,9 @@ var api_suffix_vods = "videos";
 var auth_client_token = "";
 
 function initialize(){
-  if(document.location.hash !== ""){
+  if(document.location.hash !== "" && document.location.hash.split('=') === "#access_token"){
     auth_client_token = document.location.hash.split('&')[0].split('=')[1];
-    console.log("authorisation token set!");
-    console.log(auth_client_token);
+    getClipData();
   }else{
     authorize_client();
   }
@@ -24,7 +23,7 @@ function initialize(){
 function authorize_client(){
   document.getElementById('auth-href').href = get_auth_request_string();
   document.getElementById('auth-href').style.display = "";
-  //location = get_auth_request_string(); //TODO re-enable
+  location = get_auth_request_string();
 }
 
 function get_auth_request_string(){
@@ -34,4 +33,22 @@ function get_auth_request_string(){
   req += "&response_type=" + auth_response_type;
   req += "&scope=" + auth_scopes;
   return req;
+}
+
+function getClipData(){
+  if(auth_client_token !=== ""){
+    var uxhr = new XMLHttpRequest();
+    uxhr.open('GET', api_base_url + "users?client_id=" + auth_clientID + "&token=" + auth_client_token);
+    uxhr.onreadystatechange = function(){
+      if(uxhr.readyState === 4){
+        if(uxhr.status === 200){
+          console.log(xhr.responseText);
+          //console.log(xhr);
+        }else{
+          console.log("status: " + uxhr.status);
+        }
+      }
+    }
+    uxhr.send();
+  }
 }
