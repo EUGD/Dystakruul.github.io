@@ -50,6 +50,7 @@ function getClipData(){
         if(uxhr.status === 200){
           last_response = uxhr;
           console.log(JSON.parse(uxhr.responseText));
+          formatClipRequest(JSON.parse(uxhr.responseText));
         }else{
           console.log("error.");
           console.log("status: " + uxhr.status);
@@ -59,4 +60,36 @@ function getClipData(){
     }
     uxhr.send();
   }
+}
+
+function formatClipRequest(json){
+  var streamerIDs = "";
+  var streamerNames = [""];
+  for(i=0;i<json.data.length;i++){
+    streamerIDs += (i ? "" : "&") + json.data[i].to_id;
+    streamerNames[i] = json.data.to_name;
+  }
+  console.log("ID REQWUeSTS START");
+  console.log(streamerIDs);
+  console.log("ID ResWuAWDTST END");
+  getClips(streamerIDs);
+}
+
+function getClips(streamerIDs){
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', "https://api.twitch.tv/helix/clips");
+  xhr.setRequestHeader("Client-ID", auth_clientID);
+  xhr.onreadystatechange = function(){
+    if(xxhr.readyState === 4){
+      if(xxhr.status === 200){
+        last_response = xhr;
+        console.log(JSON.parse(xhr.responseText));
+      }else{
+        console.log("error.");
+        console.log("status: " + xhr.status);
+        console.log("response: " + xhr.response);
+      }
+    }
+  }
+  xhr.send();
 }
