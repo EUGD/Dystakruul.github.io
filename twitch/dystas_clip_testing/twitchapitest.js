@@ -42,7 +42,7 @@ function get_auth_request_string(){
 function getClipData(){
   if(auth_client_token !== ""){
     var uxhr = new XMLHttpRequest();
-    uxhr.open('GET', api_base_url + "follows?from_id=37711496");
+    uxhr.open('GET', api_base_url + "users/follows?from_id=37711496");
     uxhr.setRequestHeader("Authorization", "Bearer " + auth_client_token);
     uxhr.setRequestHeader("Client-ID", auth_clientID);
     uxhr.onreadystatechange = function(){
