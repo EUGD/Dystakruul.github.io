@@ -14,7 +14,9 @@ function initialize(){
 }
 
 function authorize_client(){
-  console.log(get_auth_request_string());
+  document.getElementById('auth-href').href = get_auth_request_string();
+  document.getElementById('auth-href').style.display = "";
+  //TODO auto-redirect mit location = ...
 }
 
 function get_auth_request_string(){
@@ -23,4 +25,5 @@ function get_auth_request_string(){
   req += "&redirect_uri=" + auth_redirect_uri;
   req += "&response_type=" + auth_response_type;
   req += "&scope=" + auth_scopes;
+  return req;
 }
