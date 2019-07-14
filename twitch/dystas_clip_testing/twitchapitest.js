@@ -24,7 +24,7 @@ function initialize(){
 function authorize_client(){
   document.getElementById('auth-href').href = get_auth_request_string();
   document.getElementById('auth-href').style.display = "";
-  location = get_auth_request_string();
+  //location = get_auth_request_string();
 }
 
 function get_auth_request_string(){
