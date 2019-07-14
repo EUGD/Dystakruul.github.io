@@ -39,7 +39,9 @@ function getClipData(){
   if(auth_client_token !== ""){
     var uxhr = new XMLHttpRequest();
     //uxhr.open('GET', api_base_url + "users?client_id=" + auth_clientID + "&token=" + auth_client_token);
-    uxhr.open('GET', api_base_url + "users?token=" + auth_client_token);
+    uxhr.open('GET', api_base_url + "users");
+    //uxhr.setRequestHeader("Client-ID", auth_clientID);
+    uxhr.setRequestHeader("Authorization", "Bearer " + auth_client_token);
     uxhr.onreadystatechange = function(){
       if(uxhr.readyState === 4){
         if(uxhr.status === 200){
