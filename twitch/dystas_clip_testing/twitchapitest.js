@@ -36,7 +36,7 @@ function get_auth_request_string(){
 }
 
 function getClipData(){
-  if(auth_client_token !=== ""){
+  if(auth_client_token !== ""){
     var uxhr = new XMLHttpRequest();
     uxhr.open('GET', api_base_url + "users?client_id=" + auth_clientID + "&token=" + auth_client_token);
     uxhr.onreadystatechange = function(){
