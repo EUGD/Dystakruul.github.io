@@ -48,6 +48,8 @@ function getClipData(){
     uxhr.onreadystatechange = function(){
       if(uxhr.readyState === 4){
         if(uxhr.status === 200){
+          console.log("remaining ratelimit:");
+          console.log(uxhr.getResponseHeader('ratelimit-remaining'));
           last_response = uxhr;
           console.log(JSON.parse(uxhr.responseText));
           formatClipRequest(JSON.parse(uxhr.responseText));
@@ -77,7 +79,7 @@ function formatClipRequest(json){
 
 function getClips(streamerIDs){
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', "https://api.twitch.tv/helix/clips");
+  xhr.open('GET', "https://api.twitch.tv/helix/clips?broadcaster_id=195166073");
   xhr.setRequestHeader("Client-ID", auth_clientID);
   xhr.onreadystatechange = function(){
     if(xxhr.readyState === 4){
