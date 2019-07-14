@@ -14,7 +14,6 @@ var auth_client_token = "";
 function initialize(){
   if(document.location.hash !== "" && document.location.hash.split('=') === "#access_token"){
     auth_client_token = document.location.hash.split('&')[0].split('=')[1];
-    getClipData();
   }else{
     authorize_client();
   }
