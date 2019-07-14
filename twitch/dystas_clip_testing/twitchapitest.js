@@ -11,6 +11,10 @@ var api_suffix_vods = "videos";
 
 var auth_client_token = "";
 
+var last_response = {response: "empty"};
+
+//my id: 37711496
+
 function initialize(){
   if(document.location.hash !== "" && document.location.hash.split('=')[0] === "#access_token"){
     auth_client_token = document.location.hash.split('&')[0].split('=')[1];
@@ -38,17 +42,16 @@ function get_auth_request_string(){
 function getClipData(){
   if(auth_client_token !== ""){
     var uxhr = new XMLHttpRequest();
-    //uxhr.open('GET', api_base_url + "users?client_id=" + auth_clientID + "&token=" + auth_client_token);
-    uxhr.open('GET', api_base_url + "users");
-    //uxhr.setRequestHeader("Client-ID", auth_clientID);
+    uxhr.open('GET', api_base_url + "follows?from_id=37711496");
     uxhr.setRequestHeader("Authorization", "Bearer " + auth_client_token);
+    uxhr.setRequestHeader("Client-ID", auth_clientID);
     uxhr.onreadystatechange = function(){
       if(uxhr.readyState === 4){
         if(uxhr.status === 200){
-          console.log(uxhr.responseText);
-          console.log(uxhr.response);
-          console.log(uxhr);
+          last_response = uxhr;
+          console.log(JSON.parse(uxhr.responseText));
         }else{
+          console.log("error.");
           console.log("status: " + uxhr.status);
           console.log("response: " + uxhr.response);
         }
