@@ -46,8 +46,8 @@ function getClipData(){
       if(uxhr.readyState === 4){
         if(uxhr.status === 200){
           console.log(uxhr.responseText);
-          console.log(xhr.response);
-          console.log(xhr);
+          console.log(uxhr.response);
+          console.log(uxhr);
         }else{
           console.log("status: " + uxhr.status);
           console.log("response: " + uxhr.response);
