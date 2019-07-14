@@ -9,14 +9,22 @@ var api_suffix_clips = "clips";
 var api_suffix_streams = "streams";
 var api_suffix_vods = "videos";
 
+var auth_client_token = "";
+
 function initialize(){
-  authorize_client();
+  if(document.location.hash !== ""){
+    auth_client_token = document.location.hash.split('&')[0].split('=')[1];
+    console.log("authorisation token set!");
+    console.log(auth_client_token);
+  }else{
+    authorize_client();
+  }
 }
 
 function authorize_client(){
   document.getElementById('auth-href').href = get_auth_request_string();
   document.getElementById('auth-href').style.display = "";
-  //TODO auto-redirect mit location = ...
+  location = get_auth_request_string();
 }
 
 function get_auth_request_string(){
