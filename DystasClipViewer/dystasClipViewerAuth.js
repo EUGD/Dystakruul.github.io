@@ -6,12 +6,13 @@ var auth_scopes = ""; //no need for additional scopes
 
 function dystasClipViewer_AuthenticationCheck(){
   if(document.location.hash !== "" && document.location.hash.split('=')[0] === "#access_token"){
-    var auth_user_access_bearer_token = document.location.hash.split('=')[1];
+    var auth_user_access_bearer_token = document.location.hash.split('&')[0].split('=')[1];
     sessionStorage.setItem('auth_user_access_bearer_token', auth_user_access_bearer_token);
-    //window.location.hash = ""; //nur zur sicherheit, falls etwas mit dem redirect schiefläuft; damit kein endloses reloaden/auth requesten passiert
-    //window.location.href = "https://dystakruul.github.io/DystasClipViewer/";
+    window.location.hash = ""; //nur zur sicherheit, falls etwas mit dem redirect schiefläuft; damit kein endloses reloaden/auth requesten passiert
+    window.location.href = "https://dystakruul.github.io/DystasClipViewer/";
     //is the redirect really neccessary? does it impact the UX?
     //maybe remove text after hash (can't get rid of the hash sign itself with out reload though)
+    //window.location.hash = "";
   }else{
     if(sessionStorage.getItem('auth_user_access_bearer_token')){
       if(typeof api_base_url !== 'undefined'){ //this will have been set if body has loaded
