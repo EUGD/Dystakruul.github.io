@@ -12,7 +12,6 @@ function dystasClipViewer_AuthenticationCheck(){
     window.location.href = "https://dystakruul.github.io/DystasClipViewer/";
     //is the redirect really neccessary? does it impact the UX?
     //maybe remove text after hash (can't get rid of the hash sign itself with out reload though)
-    //window.location.hash = "";
   }else{
     if(sessionStorage.getItem('auth_user_access_bearer_token')){
       if(typeof api_base_url !== 'undefined'){ //this will have been set if body has loaded
