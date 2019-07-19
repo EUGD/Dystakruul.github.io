@@ -20,5 +20,7 @@ function TwitchAPIWebRequest(api_endpoint_url_suffix, api_query_parameters, call
     }
   };
   if(debug_enabled){console.log(apiWebRequest); return;}
+  console.log("APIWEBREQUEST"); //DEBUG
+  console.log(api_request_string); //DEBUG
   apiWebRequest.send();
 }

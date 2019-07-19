@@ -16,12 +16,14 @@ var debug_last_api_response = {response: "empty"};
 var debug_last_api_response_remaining_rate_limit = 0;
 
 function initialize_dystasClipViewer(){
+  console.log("INIT"); //DEBUG
   auth_user_token = sessionStorage.getItem('auth_user_access_bearer_token');  
   if(debug_enabled){debug_build_page_from_local_clipdata();}
   //loadClips();
 }
 
 function loadClips(){
+  console.log("LOADCLIPS"); //DEBUG
   TwitchAPIWebRequest(api_endpoint_url_suffix__clips, "?broadcaster_id=195166073", function(jsondata){
     clipdata = jsondata;
     build_page_from_clipdata();

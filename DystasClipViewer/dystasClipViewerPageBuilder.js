@@ -1,4 +1,5 @@
 function build_page_from_clipdata(){
+  console.log("BUILD FROM CLIPDATA"); //DEBUG
   var clip_thumbs = document.getElementById('clip-thumbs');
   if(clipdata){
     !clipdata.length?clipdata=clipdata.data:"";
@@ -8,7 +9,7 @@ function build_page_from_clipdata(){
       );
     }
   }else{
-    console.log("clipdata not found");
+    console.log("clipdata not found"); //DEBUG
     //clipdata not found
     //display error?
     //in the iframe?
@@ -19,6 +20,7 @@ function build_page_from_clipdata(){
 }
 
 function debug_build_page_from_local_clipdata(){
+  console.log("DEBUG BUILD FROM LOCAL CLIPDATA"); //DEBUG
   var clip_thumbs = document.getElementById('clip-thumbs');
   for(i = 0; i < debug_clipdata.data.length; i++){
     clip_thumbs.appendChild(
@@ -63,6 +65,7 @@ function createClipThumbElement(clip_thumbnail_url, clip_embed_url, clip_title, 
 }
 
 function clip_clicked(clip_id){
+  console.log("CLIP CLICKED"); //DEBUG
   var clipdate = (new Date(debug_clipdata.data[clip_id].created_at)).toLocaleDateString(undefined, {
     year: "numeric",
     month: "long",
@@ -74,6 +77,7 @@ function clip_clicked(clip_id){
 }
 
 function clear_clip_thumb_view(){
+  console.log("CLEAR CLIP THMB VIEW"); //DEBUG
   var clip_thumbs = document.getElementById('clip-thumbs');
   while(clip_thumbs.firstChild){
     clip_thumbs.removeChild(clip_thumbs.firstChild);

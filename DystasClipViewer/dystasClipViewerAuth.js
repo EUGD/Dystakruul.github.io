@@ -12,6 +12,7 @@ if(debug_enabled){
  //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG
 
 function dystasClipViewer_AuthenticationCheck(){
+  console.log("AUTH CHECK"); //DEBUG
   if(document.location.hash !== "" && document.location.hash.split('=')[0] === "#access_token"){
     var auth_user_access_bearer_token = document.location.hash.split('&')[0].split('=')[1];
     sessionStorage.setItem('auth_user_access_bearer_token', auth_user_access_bearer_token);
@@ -36,6 +37,7 @@ function dystasClipViewer_AuthenticationCheck(){
 }
 
 function request_authentication(){
+  console.log("AUTH REQUEST"); //DEBUG
   var auth_request_url = "";
   auth_request_url += auth_api_base_url;
   auth_request_url += "?client_id=" + auth_clientID;
