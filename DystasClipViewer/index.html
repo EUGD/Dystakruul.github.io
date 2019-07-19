@@ -7,7 +7,30 @@
     <title>Dystas Clip Viewer</title>
   </head>
   <body>
-    <a href="#">DystasClipViewerv0.9</a>
+    <div class="header">
+      <div class="header-menu-container">
+        <a href="#1" class="header-menu-link"><div class="header-text-container"><span class="header-text">Menu</span></div></a>
+        <a href="#1" class="header-menu-link"><div class="header-text-container"><span class="header-text">Menu</span></div></a>
+        <a href="#1" class="header-menu-link"><div class="header-text-container"><span class="header-text">Menu</span></div></a>
+        <a href="#1" class="header-menu-link-right"><div class="header-text-container-right"><span class="header-text">Menu</span></div></a>
+      </div>
+    </div>
+    
+    <div class="clip-content">
+      <div class="clip-container content-container">
+        <iframe id="clip-iframe" name="clip-iframe" src="" allowfullscreen="true" frameborder="0"></iframe>
+        <div class="clip-info">
+          <p id="clip-title">clip title</p>
+          <span id="clip-date" class="clip-info-text">XX. Xxxx 20XX</span>
+          <span id="clip-views" class="clip-infor-text"> XXXXXX views</span>
+        </div>
+      </div>
+      
+      <div id="clip-thumbs">
+      </div>
+    </div>
+    
+    
     <script src="dystasClipViewer.js" charset="utf-8"></script>
     <script src="dystasClipViewerAPIWebRequests.js" charset="utf-8"></script>
   </body>
