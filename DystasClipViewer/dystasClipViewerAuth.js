@@ -4,14 +4,19 @@ var auth_redirect_uri = "https://dystakruul.github.io/DystasClipViewer/";
 var auth_response_type = "token";
 var auth_scopes = ""; //no need for additional scopes
 
+ //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG
+var debug_enabled = location.host !== "dystakruul.github.io";
+ //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG
+
 function dystasClipViewer_AuthenticationCheck(){
   if(document.location.hash !== "" && document.location.hash.split('=')[0] === "#access_token"){
     var auth_user_access_bearer_token = document.location.hash.split('&')[0].split('=')[1];
     sessionStorage.setItem('auth_user_access_bearer_token', auth_user_access_bearer_token);
+    if(debug_enabled){return;} //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG
     window.location.hash = ""; //nur zur sicherheit, falls etwas mit dem redirect schiefläuft; damit kein endloses reloaden/auth requesten passiert
     window.location.href = "https://dystakruul.github.io/DystasClipViewer/";
     //is the redirect really neccessary? does it impact the UX?
-    //maybe remove text after hash (can't get rid of the hash sign itself with out reload though)
+    //maybe only remove text after hash (can't get rid of the hash sign itself with out reload though)
   }else{
     if(sessionStorage.getItem('auth_user_access_bearer_token')){
       if(typeof api_base_url !== 'undefined'){ //this will have been set if body has loaded
@@ -36,5 +41,6 @@ function request_authentication(){
   auth_request_url += "&scope=" + auth_scopes;
   
   console.log(auth_request_url);
+  if(debug_enabled){return;} //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG
   window.location.href = auth_request_url;
 }

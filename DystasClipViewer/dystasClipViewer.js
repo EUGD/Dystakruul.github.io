@@ -6,23 +6,16 @@ var api_endpoint_url_suffix__clips = "clips";
 
 var auth_user_token; //read on initialize
 
-//disables auto-redirects and API-requestss
+//checks whether the site is on live servers or hosted locally (-> in active development)
 var debug_enabled = location.host !== "dystakruul.github.io";
+//may be used for disabling auto-redirects and API-requests etc.
 
 var debug_last_api_response = {response: "empty"};
 var debug_last_api_response_remaining_rate_limit = 0;
 
 function initialize_dystasClipViewer(){
-  console.log("INIT");
-  
   auth_user_token = sessionStorage.getItem('auth_user_access_bearer_token');
   
-  // DEBUG
-  document.getElementsByTagName('a')[0].innerHTML = auth_user_token ? ""+sessionStorage.getItem('auth_user_access_bearer_token') : "auth failed horribly. rip.";
-  // DEBUG
-  
   //load clips
-  console.log("EVERYTHING SUCCESSFUL. NOW LOAD CLIPS");
   //build page
-  console.log("EVERYTHING SUCCESSFUL. NOW BUILD PAGE");
 }
