@@ -14,9 +14,8 @@ function TwitchAPIWebRequest(api_endpoint_url_suffix, api_query_parameters, call
         //DEBUG:
         debug_last_api_response = apiWebRequest.response;
         debug_last_api_response_remaining_rate_limit = apiWebRequest.getResponseHeader('ratelimit-remaining');
-        console.log(apiWebRequest.response.headers.get('ratelimit-remaining'));
-        console.log(apiWebRequest.getAllResponseHeaders());
         console.log("remaining ratelimit: " + debug_last_api_response_remaining_rate_limit);
+        console.log(apiWebRequest);
       }else{
         console.log("[API_WEBREQUEST] (STATUS ERROR)");
         console.log("status: " + apiWebRequest.status + " (" + apiWebRequest.statusText + ")");
