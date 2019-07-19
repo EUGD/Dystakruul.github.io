@@ -4,7 +4,7 @@ function build_page_from_clipdata(){
     !clipdata.length?clipdata=clipdata.data:"";
     for(i = 0; i < clipdata.length; i++){
       clip_thumbs.appendChild(
-        createClipThumbElement_fromClipdata(clipdata)
+        createClipThumbElement_fromClipdata(clipdata, i)
       );
     }
   }else{
