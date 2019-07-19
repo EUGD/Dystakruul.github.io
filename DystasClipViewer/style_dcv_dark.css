@@ -95,7 +95,7 @@ a:hover{
 }
 
 .clip-info-text{
-  color: #5a7695;
+  color: #898395;
 }
 
 #clip-title{
@@ -103,6 +103,7 @@ a:hover{
   margin-inline: 1em;
   color: white;
   padding-block: 0.5em;
+  padding-bottom: 1em;
 }
 
 #clip-date{

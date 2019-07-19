@@ -6,6 +6,9 @@ var auth_scopes = ""; //no need for additional scopes
 
  //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG
 var debug_enabled = location.host !== "dystakruul.github.io";
+if(debug_enabled){
+  window.onload = function(){initialize_dystasClipViewer()};
+}
  //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG //DEBUG
 
 function dystasClipViewer_AuthenticationCheck(){
