@@ -8,7 +8,7 @@ function dystasClipViewer_AuthenticationCheck(){
   if(document.location.hash !== "" && document.location.hash.split('=')[0] === "#access_token"){
     var auth_user_access_bearer_token = document.location.hash.split('=')[1];
     sessionStorage.setItem('auth_user_access_bearer_token', auth_user_access_bearer_token);
-    window.location.hash = ""; //nur zur sicherheit, falls etwas mit dem redirect schiefläuft; damit kein endloses reloaden/auth requesten passiert
+    //window.location.hash = ""; //nur zur sicherheit, falls etwas mit dem redirect schiefläuft; damit kein endloses reloaden/auth requesten passiert
     //window.location.href = "https://dystakruul.github.io/DystasClipViewer/";
     //is the redirect really neccessary? does it impact the UX?
     //maybe remove text after hash (can't get rid of the hash sign itself with out reload though)
