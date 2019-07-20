@@ -17,7 +17,11 @@ var debug_last_api_response_remaining_rate_limit = 0;
 function initialize_dystasClipViewer(){
   auth_user_token = sessionStorage.getItem('auth_user_access_bearer_token');
   followedChannels = JSON.parse(localStorage.getItem('dystasClipViewer_followedChannels'));
-  debug_enabled?debug_build_page_from_local_clipdata():loadClips();
+  debug_enabled?debug_build_page_from_local_clipdata():
+  loadClips();
+  console.log("clips already loaded?");
+  console.log("if yes, build page now pls");
+  //gotta adapt build_page_from_clipdata to new clipdata structure
 }
 
 function loadClips(){
@@ -39,8 +43,10 @@ function loadClips(){
       "&first=" + num_of_clips,
       function(jsondata){
         clipdata[Object.keys(followedChannels)[k]] = jsondata.data;
-        //clipdata[jsondata.data[0].broadcaster_id] = jsondata.data;
+        clipdata.test[jsondata.data[0].broadcaster_id] = jsondata.data;
       }
     );
   }
+  
+  console.log("finished loading clips");
 }
