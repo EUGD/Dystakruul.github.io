@@ -16,7 +16,8 @@ var debug_last_api_response = {response: "empty"};
 function initialize_dystasClipViewer(){
   auth_user_token = sessionStorage.getItem('auth_user_access_bearer_token');
   followedChannels = JSON.parse(localStorage.getItem('dystasClipViewer_followedChannels'));
-  debug_enabled?debug_build_page_from_local_clipdata():loadClips();
+  debug_enabled?debug_build_page_from_local_clipdata():
+  loadClips();
   console.log("clips already loaded?");
   build_page_from_clipdata();
 }
@@ -25,9 +26,9 @@ function loadClips(){
   if(!followedChannels){iframe_write("failed loading followed channels"); return;}
   var broadcasterId = "0";
   var num_of_clips = 5;
-  var start_date = new Date();
+  var end_date = new Date();
   var timespan_days = 7;
-  var end_date = new Date(start_date.getTime() + (timespan_days * 24 * 60 * 60 * 1000));
+  var start_date = new Date(end_date.getTime() - (timespan_days * 24 * 60 * 60 * 1000));
   var start_date_ISO_String = start_date.toISOString();
   var end_date_ISO_String = end_date.toISOString();
   
@@ -40,6 +41,7 @@ function loadClips(){
       "&first=" + num_of_clips,
       function(jsondata){
         console.log(jsondata);
+        !jsondata.data?function(){iframe_write("empty response")}:null;
         clipdata[jsondata.data[0].broadcaster_id] = jsondata.data;
       }
     );
