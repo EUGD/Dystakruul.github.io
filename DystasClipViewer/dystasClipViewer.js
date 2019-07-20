@@ -28,7 +28,7 @@ function loadClips(){
   var timespan_days = 7;
   var end_date = new Date(start_date.getTime() + (timespan_days * 24 * 60 * 60 * 1000));
   var start_date_ISO_String = start_date.toISOString();
-  var end_date_ISO_String = end_date.getISOString();
+  var end_date_ISO_String = end_date.toISOString();
   
   for(k = 0; k < Objeckt.keys(followedChannels).length; k++){
     TwitchAPIWebRequest(
