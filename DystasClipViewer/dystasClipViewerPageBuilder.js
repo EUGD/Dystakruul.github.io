@@ -6,7 +6,7 @@ function build_page_from_clipdata(){
     for(m = 0; m < clipdata[Object.keys(clipdata)[n]].length; m++){
       clip_thumbs.appendChild(
         createClipThumbElement_fromClipdata(
-          clipdata[Object.keys(clipdata)[n]],
+          clipdata[Object.keys(clipdata)[n]][m],
           Object.keys(clipdata)[n], m
         )
       );
