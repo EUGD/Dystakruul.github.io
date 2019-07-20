@@ -44,6 +44,7 @@ function loadClips(){ console.log("load clips");
         !jsondata.data?function(){console.log("empty response")}:null;
         !clipdata&&(clipdata={});
         clipdata[jsondata.data[0].broadcaster_id] = jsondata.data;
+        if(debug_page_built){build_page_from_clipdata();}
       }
     );
   }
