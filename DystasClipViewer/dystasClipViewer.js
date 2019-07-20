@@ -5,6 +5,9 @@ var auth_user_token; //read on initialize
 var api_base_url = "https://api.twitch.tv/helix/";
 var api_endpoint_url_suffix__clips = "clips";
 
+var api_pending_requests = 0;
+var api_request_resolved_actions;
+
 var clipdata; //loaded after auth success / on init
 var followedChannels; //loaded on init
 
@@ -18,8 +21,8 @@ var debug_clips_loaded = false;
 function initialize_dystasClipViewer(){ console.log("init");
   auth_user_token = sessionStorage.getItem('auth_user_access_bearer_token');
   followedChannels = JSON.parse(localStorage.getItem('dystasClipViewer_followedChannels'));
+  api_request_resolved_actions = function(){};
   loadClips();
-  build_page_from_clipdata();
 }
 
 function loadClips(){ console.log("load clips");
@@ -31,6 +34,14 @@ function loadClips(){ console.log("load clips");
   var start_date = new Date(end_date.getTime() - (timespan_days * 24 * 60 * 60 * 1000));
   var start_date_ISO_String = start_date.toISOString();
   var end_date_ISO_String = end_date.toISOString();
+  
+  if(api_request_string.toString().length <= 12){
+    api_request_resolved_actions = function(){
+      build_page_from_clipdata();
+    }
+  }else{
+    console.log("api_request_resolved_actions is already set!");
+  }
   
   for(k = 0; k < Object.keys(followedChannels).length; k++){
     TwitchAPIWebRequest(
@@ -44,11 +55,9 @@ function loadClips(){ console.log("load clips");
         !jsondata.data?function(){console.log("empty response")}:null;
         !clipdata&&(clipdata={});
         clipdata[jsondata.data[0].broadcaster_id] = jsondata.data;
-        if(debug_page_built){build_page_from_clipdata();}
       }
     );
   }
-  if(debug_page_built){build_page_from_clipdata();}
 }
 
 function getClipRating(clip_creation_date, clip_views){

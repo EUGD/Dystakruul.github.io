@@ -13,7 +13,6 @@ function build_page_from_clipdata(){  console.log("build page");
       );
     }
   }
-  debug_page_built = true;
 }
 
 function createClipThumbElement_fromClipdata(cdata, broadcaster_id, clip_id){
