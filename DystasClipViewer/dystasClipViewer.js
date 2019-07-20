@@ -41,6 +41,7 @@ function loadClips(){
       "&ended_at=" + end_date_ISO_String +
       "&first=" + num_of_clips,
       function(jsondata){
+        console.log(jsondata);
         clipdata[jsondata.data[0].broadcaster_id] = jsondata.data;
       }
     );
