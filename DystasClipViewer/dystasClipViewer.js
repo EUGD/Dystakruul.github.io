@@ -12,7 +12,6 @@ var followedChannels; //loaded on init
 //may be used for disabling auto-redirects and API-requests etc.
 var debug_enabled = location.host !== "dystakruul.github.io";
 var debug_last_api_response = {response: "empty"};
-var debug_last_api_response_remaining_rate_limit = 0;
 
 function initialize_dystasClipViewer(){
   auth_user_token = sessionStorage.getItem('auth_user_access_bearer_token');

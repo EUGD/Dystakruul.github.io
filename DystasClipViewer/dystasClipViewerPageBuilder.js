@@ -12,21 +12,6 @@ function build_page_from_clipdata(){
       );
     }
   }
-  
-  
-  
-  
-  
-  if(clipdata){
-    !clipdata.length?clipdata=clipdata.data:"";
-    for(i = 0; i < clipdata.length; i++){
-      clip_thumbs.appendChild(
-        createClipThumbElement_fromClipdata(clipdata[i], i)
-      );
-    }
-  }else{
-    iframe_write("clipdata not found."); //DEBUG
-  }
 }
 
 function debug_build_page_from_local_clipdata(){

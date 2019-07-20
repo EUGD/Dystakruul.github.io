@@ -9,6 +9,9 @@ function TwitchAPIWebRequest(api_endpoint_url_suffix, api_query_parameters, call
   apiWebRequest.onreadystatechange = function(){
     if(apiWebRequest.readyState === 4){
       if(apiWebRequest.status === 200){
+        console.log("requesting " + api_request_string);
+        console.log(apiWebRequest);
+        
         callback_function(JSON.parse(apiWebRequest.responseText));
         
         debug_last_api_response = apiWebRequest.response; //DEBUG
