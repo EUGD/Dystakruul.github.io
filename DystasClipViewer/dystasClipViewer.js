@@ -23,6 +23,7 @@ function initialize_dystasClipViewer(){
 }
 
 function loadClips(){
+  iframe_write("load clips"); //DEBUG
   if(!followedChannels){iframe_write("failed loading followed channels"); return;}
   var broadcasterId = "0";
   var num_of_clips = 5;
@@ -47,5 +48,6 @@ function loadClips(){
       }
     );
   }
-  debug_page_built&&build_page_from_clipdata();
+  if(debug_page_built){build_page_from_clipdata();}
+  iframe_write("load clips end"); //DEBUG
 }

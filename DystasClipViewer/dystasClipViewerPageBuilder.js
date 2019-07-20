@@ -1,4 +1,5 @@
 function build_page_from_clipdata(){
+  iframe_write("build page"); //DEBUG
   if(debug_enabled){clipdata = {"debug": debug_clipdata.data};}
   if(!clipdata){return;}
   clear_clip_thumb_view();
@@ -14,6 +15,7 @@ function build_page_from_clipdata(){
     }
   }
   debug_page_built = true;
+  iframe_write("build page end"); //DEBUG
 }
 
 function createClipThumbElement_fromClipdata(cdata, broadcaster_id, clip_id){
