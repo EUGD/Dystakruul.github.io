@@ -29,7 +29,7 @@ function createClipThumbElement_fromClipdata(cdata, broadcaster_id, clip_id){
   );
 }
 
-function createClipThumbElement(clip_thumbnail_url, clip_embed_url, clip_title, clip_date, clip_views, clip_id, clip_rating){
+function createClipThumbElement(clip_thumbnail_url, clip_embed_url, clip_title, clip_date, clip_views, broadcaster_id, clip_id, clip_rating){
   var clip_thumb_container = document.createElement('div');
   var clip_thumb_title_container = document.createElement('div');
   var clip_thumb_title = document.createElement('p');
