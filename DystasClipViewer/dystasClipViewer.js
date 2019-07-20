@@ -19,7 +19,7 @@ function initialize_dystasClipViewer(){
 }
 
 function loadClips(){
-  TwitchAPIWebRequest(api_endpoint_url_suffix__clips, "?broadcaster_id=195166073", function(jsondata){
+  TwitchAPIWebRequest(api_endpoint_url_suffix__clips, "?broadcaster_id=195166073&started_at=2019-07-20T11:21:29+02:00", function(jsondata){
     clipdata = jsondata;
     build_page_from_clipdata();
   });
