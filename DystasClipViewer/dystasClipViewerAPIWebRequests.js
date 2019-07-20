@@ -11,11 +11,7 @@ function TwitchAPIWebRequest(api_endpoint_url_suffix, api_query_parameters, call
       if(apiWebRequest.status === 200){
         callback_function(JSON.parse(apiWebRequest.responseText));
         
-        //DEBUG:
-        debug_last_api_response = apiWebRequest.response;
-        debug_last_api_response_remaining_rate_limit = apiWebRequest.getResponseHeader('ratelimit-remaining');
-        console.log("remaining ratelimit: " + debug_last_api_response_remaining_rate_limit);
-        console.log(apiWebRequest);
+        debug_last_api_response = apiWebRequest.response; //DEBUG
       }else{
         console.log("[API_WEBREQUEST] (STATUS ERROR)");
         console.log("status: " + apiWebRequest.status + " (" + apiWebRequest.statusText + ")");
@@ -23,5 +19,7 @@ function TwitchAPIWebRequest(api_endpoint_url_suffix, api_query_parameters, call
     }
   };
   if(debug_enabled){console.log(apiWebRequest); return;}
-  apiWebRequest.send();
+  console.log("REQUESTED:");
+  console.log(api_request_string);
+  //apiWebRequest.send();
 }
