@@ -12,13 +12,14 @@ var followedChannels; //loaded on init
 //may be used for disabling auto-redirects and API-requests etc.
 var debug_enabled = location.host !== "dystakruul.github.io";
 var debug_last_api_response = {response: "empty"};
+var debug_page_built = false;
+var debug_clips_loaded = false;
 
 function initialize_dystasClipViewer(){
   auth_user_token = sessionStorage.getItem('auth_user_access_bearer_token');
   followedChannels = JSON.parse(localStorage.getItem('dystasClipViewer_followedChannels'));
   debug_enabled?debug_build_page_from_local_clipdata():
   loadClips();
-  console.log("clips already loaded?");
   build_page_from_clipdata();
 }
 
@@ -47,6 +48,5 @@ function loadClips(){
       }
     );
   }
-  
-  console.log("finished loading clips");
+  debug_page_built&&build_page_from_clipdata();
 }
