@@ -30,7 +30,7 @@ function loadClips(){
   var start_date_ISO_String = start_date.toISOString();
   var end_date_ISO_String = end_date.toISOString();
   
-  for(k = 0; k < Objeckt.keys(followedChannels).length; k++){
+  for(k = 0; k < Object.keys(followedChannels).length; k++){
     TwitchAPIWebRequest(
       api_endpoint_url_suffix__clips,
       "?broadcaster_id=" + Object.keys(followedChannels)[k] +
