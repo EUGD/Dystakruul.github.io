@@ -15,14 +15,14 @@ var debug_last_api_response = {response: "empty"};
 var debug_page_built = false;
 var debug_clips_loaded = false;
 
-function initialize_dystasClipViewer(){
+function initialize_dystasClipViewer(){ console.log("init");
   auth_user_token = sessionStorage.getItem('auth_user_access_bearer_token');
   followedChannels = JSON.parse(localStorage.getItem('dystasClipViewer_followedChannels'));
   loadClips();
   build_page_from_clipdata();
 }
 
-function loadClips(){
+function loadClips(){ console.log("load clips");
   if(!followedChannels){console.log("failed loading followed channels"); return;}
   var broadcasterId = "0";
   var num_of_clips = 5;

@@ -9,7 +9,7 @@ if(debug_enabled){
   window.onload = function(){initialize_dystasClipViewer()};
 }
 
-function dystasClipViewer_AuthenticationCheck(){
+function dystasClipViewer_AuthenticationCheck(){  console.log("auth");
   if(document.location.hash !== "" && document.location.hash.split('=')[0] === "#access_token"){
     var auth_user_access_bearer_token = document.location.hash.split('&')[0].split('=')[1];
     sessionStorage.setItem('auth_user_access_bearer_token', auth_user_access_bearer_token);

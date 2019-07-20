@@ -1,4 +1,4 @@
-function build_page_from_clipdata(){
+function build_page_from_clipdata(){  console.log("build page");
   if(debug_enabled){clipdata = {"debug": debug_clipdata.data};}
   if(!clipdata){return;}
   clear_clip_thumb_view();
@@ -68,7 +68,7 @@ function clip_clicked(broadcaster_id, clip_id){
   });
 }
 
-function clear_clip_thumb_view(){
+function clear_clip_thumb_view(){  console.log("clear thumbs");
   var clip_thumbs = document.getElementById('clip-thumbs');
   while(clip_thumbs.firstChild){
     clip_thumbs.removeChild(clip_thumbs.firstChild);
