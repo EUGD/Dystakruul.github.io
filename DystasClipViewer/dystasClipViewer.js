@@ -35,7 +35,7 @@ function loadClips(){ console.log("load clips");
   var start_date_ISO_String = start_date.toISOString();
   var end_date_ISO_String = end_date.toISOString();
   
-  if(api_request_string.toString().length <= 12){
+  if(api_request_resolved_actions.toString().length <= 12){
     api_request_resolved_actions = function(){
       build_page_from_clipdata();
     }
