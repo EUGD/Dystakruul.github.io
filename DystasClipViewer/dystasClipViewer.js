@@ -62,11 +62,9 @@ function loadClips(){
 
 function getClipRating(clip_creation_date, clip_views){
   var clip_age = getDaysSince(clip_creation_date);
-  return (clip_views * ((-Math.tanh((2*clip_age/3)-4)+1)/2));
+  return (((clip_views * ((-Math.tanh((2*clip_age/3)-4)+1)/2)))/1000);
 }
 
 function getDaysSince(date_string){
-  return (Math.round((
-    (new Date().getTime() - new Date(date_string).getTime()) / (24 * 60 * 60 * 1000)
-  ) * 1) / 100);
+  return ((new Date().getTime() - new Date(date_string).getTime()) / (24 * 60 * 60 * 1000));
 }
