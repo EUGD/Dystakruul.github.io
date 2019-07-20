@@ -20,8 +20,7 @@ function initialize_dystasClipViewer(){
   debug_enabled?debug_build_page_from_local_clipdata():
   loadClips();
   console.log("clips already loaded?");
-  console.log("if yes, build page now pls");
-  //gotta adapt build_page_from_clipdata to new clipdata structure
+  build_page_from_clipdata();
 }
 
 function loadClips(){
@@ -42,8 +41,7 @@ function loadClips(){
       "&ended_at=" + end_date_ISO_String +
       "&first=" + num_of_clips,
       function(jsondata){
-        clipdata[Object.keys(followedChannels)[k]] = jsondata.data;
-        clipdata.test[jsondata.data[0].broadcaster_id] = jsondata.data;
+        clipdata[jsondata.data[0].broadcaster_id] = jsondata.data;
       }
     );
   }
