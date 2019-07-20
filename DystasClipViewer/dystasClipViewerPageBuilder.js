@@ -16,9 +16,6 @@ function build_page_from_clipdata(){  console.log("build page");
 }
 
 function createClipThumbElement_fromClipdata(cdata, broadcaster_id, clip_id){
-  //console.log(getClipRating(cdata.created_at, cdata.view_count));
-  //console.log(cdata.created_at);
-  //console.log(new Date(cdata.created_at));
   return createClipThumbElement(
     cdata.thumbnail_url,
     cdata.embed_url,
@@ -31,7 +28,7 @@ function createClipThumbElement_fromClipdata(cdata, broadcaster_id, clip_id){
   );
 }
 
-function createClipThumbElement(clip_thumbnail_url, clip_embed_url, clip_title, clip_date, clip_views, clip_id, clip_rating){
+function createClipThumbElement(clip_thumbnail_url, clip_embed_url, clip_title, clip_date, clip_views, broadcaster_id, clip_id, clip_rating){
   var clip_thumb_container = document.createElement('div');
   var clip_thumb_title_container = document.createElement('div');
   var clip_thumb_title = document.createElement('p');
