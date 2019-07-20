@@ -1,9 +1,10 @@
 function build_page_from_clipdata(){
+  if(debug_enabled){clipdata = {"debug": debug_clipdata.data};}
   if(!clipdata){return;}
   clear_clip_thumb_view();
   var clip_thumbs = document.getElementById('clip-thumbs');
-  for(n = 0; n < Object.keys(clipdata).length; n++){
-    for(m = 0; m < clipdata[Object.keys(clipdata)[n]].length; m++){
+  for(n = 0; n < Object.keys(clipdata).length && n < 3; n++){ //DEBUG
+    for(m = 0; m < clipdata[Object.keys(clipdata)[n]].length && m < 3; m++){ //DEBUG
       clip_thumbs.appendChild(
         createClipThumbElement_fromClipdata(
           clipdata[Object.keys(clipdata)[n]][m],
@@ -12,16 +13,7 @@ function build_page_from_clipdata(){
       );
     }
   }
-}
-
-function debug_build_page_from_local_clipdata(){
-  clear_clip_thumb_view();
-  var clip_thumbs = document.getElementById('clip-thumbs');
-  for(i = 0; i < debug_clipdata.data.length; i++){
-    clip_thumbs.appendChild(
-      createClipThumbElement_fromClipdata(debug_clipdata.data[i])
-    );
-  }
+  debug_page_built = true;
 }
 
 function createClipThumbElement_fromClipdata(cdata, broadcaster_id, clip_id){
@@ -81,4 +73,5 @@ function clear_clip_thumb_view(){
 function iframe_write(textToWrite){
   console.log("writing to iFrame: " + textToWrite);
   document.getElementById('clip-iframe').contentWindow.document.write("<p style='color:white;'>" + textToWrite + "</p>");
+  return textToWrite;
 }
