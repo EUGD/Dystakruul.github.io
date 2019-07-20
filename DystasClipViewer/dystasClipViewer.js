@@ -23,8 +23,7 @@ function initialize_dystasClipViewer(){
 }
 
 function loadClips(){
-  iframe_write("load clips"); //DEBUG
-  if(!followedChannels){iframe_write("failed loading followed channels"); return;}
+  if(!followedChannels){console.log("failed loading followed channels"); return;}
   var broadcasterId = "0";
   var num_of_clips = 5;
   var end_date = new Date();
@@ -42,12 +41,22 @@ function loadClips(){
       "&first=" + num_of_clips,
       function(jsondata){
         console.log(jsondata);
-        !jsondata.data?function(){iframe_write("empty response")}:null;
+        !jsondata.data?function(){console.log("empty response")}:null;
         !clipdata&&(clipdata={});
         clipdata[jsondata.data[0].broadcaster_id] = jsondata.data;
       }
     );
   }
   if(debug_page_built){build_page_from_clipdata();}
-  iframe_write("load clips end"); //DEBUG
+}
+
+function getClipRating(clip_creation_date, clip_views){
+  var clip_age = getDaysSince(clip_creation_date);
+  return (clip_views * ((-Math.tanh((2*clip_age/3)-4)+1)/2));
+}
+
+function getDaysSince(date_string){
+  return (Math.round((
+    (new Date().getTime() - new Date(date_string).getTime()) / (24 * 60 * 60 * 1000)
+  ) * 100) / 100);
 }

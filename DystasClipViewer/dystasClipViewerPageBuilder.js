@@ -1,11 +1,10 @@
 function build_page_from_clipdata(){
-  iframe_write("build page"); //DEBUG
   if(debug_enabled){clipdata = {"debug": debug_clipdata.data};}
   if(!clipdata){return;}
   clear_clip_thumb_view();
   var clip_thumbs = document.getElementById('clip-thumbs');
-  for(n = 0; n < Object.keys(clipdata).length && n < 3; n++){ //DEBUG
-    for(m = 0; m < clipdata[Object.keys(clipdata)[n]].length && m < 3; m++){ //DEBUG
+  for(n = 0; n < Object.keys(clipdata).length; n++){ //DEBUG
+    for(m = 0; m < clipdata[Object.keys(clipdata)[n]].length; m++){ //DEBUG
       clip_thumbs.appendChild(
         createClipThumbElement_fromClipdata(
           clipdata[Object.keys(clipdata)[n]][m],
@@ -15,10 +14,12 @@ function build_page_from_clipdata(){
     }
   }
   debug_page_built = true;
-  iframe_write("build page end"); //DEBUG
 }
 
 function createClipThumbElement_fromClipdata(cdata, broadcaster_id, clip_id){
+  //console.log(getClipRating(cdata.created_at, cdata.view_count));
+  //console.log(cdata.created_at);
+  //console.log(new Date(cdata.created_at));
   return createClipThumbElement(
     cdata.thumbnail_url,
     cdata.embed_url,
@@ -26,11 +27,12 @@ function createClipThumbElement_fromClipdata(cdata, broadcaster_id, clip_id){
     cdata.created_at,
     cdata.view_count,
     broadcaster_id,
-    clip_id
+    clip_id,
+    getClipRating(cdata.created_at, cdata.view_count * 100)
   );
 }
 
-function createClipThumbElement(clip_thumbnail_url, clip_embed_url, clip_title, clip_date, clip_views, clip_id){
+function createClipThumbElement(clip_thumbnail_url, clip_embed_url, clip_title, clip_date, clip_views, clip_id, clip_rating){
   var clip_thumb_container = document.createElement('div');
   var clip_thumb_title_container = document.createElement('div');
   var clip_thumb_title = document.createElement('p');
@@ -51,6 +53,7 @@ function createClipThumbElement(clip_thumbnail_url, clip_embed_url, clip_title, 
   clip_thumb_container.appendChild(clip_link);
   clip_thumb_container.appendChild(clip_thumb_title_container);
   clip_thumb_container.onclick = function(){clip_clicked(broadcaster_id, clip_id);};
+  clip_thumb_container.setAttribute('clip_rating', clip_rating);
   return clip_thumb_container;
 }
 
@@ -70,10 +73,4 @@ function clear_clip_thumb_view(){
   while(clip_thumbs.firstChild){
     clip_thumbs.removeChild(clip_thumbs.firstChild);
   }
-}
-
-function iframe_write(textToWrite){
-  console.log("writing to iFrame: " + textToWrite);
-  document.getElementById('clip-iframe').contentWindow.document.write("<p style='color:white;'>" + textToWrite + "</p>");
-  return textToWrite;
 }

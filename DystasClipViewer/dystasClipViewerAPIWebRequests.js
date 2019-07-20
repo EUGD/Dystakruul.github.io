@@ -1,6 +1,5 @@
 function TwitchAPIWebRequest(api_endpoint_url_suffix, api_query_parameters, callback_function){
   //'query_parameters' HAS to include '?' and '&'
-  iframe_write("api request"); //DEBUG
   
   var api_request_string = api_base_url + api_endpoint_url_suffix + api_query_parameters;
   var apiWebRequest = new XMLHttpRequest();
@@ -24,5 +23,4 @@ function TwitchAPIWebRequest(api_endpoint_url_suffix, api_query_parameters, call
   };
   if(debug_enabled){console.log(apiWebRequest); return;}
   apiWebRequest.send();
-  iframe_write("api request end"); //DEBUG
 }

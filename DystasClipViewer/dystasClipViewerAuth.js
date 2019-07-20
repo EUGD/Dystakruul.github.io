@@ -10,7 +10,6 @@ if(debug_enabled){
 }
 
 function dystasClipViewer_AuthenticationCheck(){
-  iframe_write("auth"); //DEBUG
   if(document.location.hash !== "" && document.location.hash.split('=')[0] === "#access_token"){
     var auth_user_access_bearer_token = document.location.hash.split('&')[0].split('=')[1];
     sessionStorage.setItem('auth_user_access_bearer_token', auth_user_access_bearer_token);
@@ -32,7 +31,6 @@ function dystasClipViewer_AuthenticationCheck(){
       request_authentication();
     }
   }
-  iframe_write("auth end"); //DEBUG
 }
 
 function request_authentication(){
