@@ -1,4 +1,4 @@
-function TwitchAPIWebRequest(api_endpoint_url_suffix, api_query_parameters, callback_function){  console.log("request");
+function TwitchAPIWebRequest(api_endpoint_url_suffix, api_query_parameters, callback_function){
   //'query_parameters' HAS to include '?' and '&'
   
   api_pending_requests++;
@@ -6,8 +6,8 @@ function TwitchAPIWebRequest(api_endpoint_url_suffix, api_query_parameters, call
   var api_request_string = api_base_url + api_endpoint_url_suffix + api_query_parameters;
   var apiWebRequest = new XMLHttpRequest();
   apiWebRequest.open('GET', api_request_string);
-  apiWebRequest.setRequestHeader("Authorization", "Bearer " + auth_user_token);
   apiWebRequest.setRequestHeader("Client-ID", auth_clientID);
+  apiWebRequest.setRequestHeader("Authorization", "Bearer " + auth_user_token);
   apiWebRequest.onreadystatechange = function(){
     if(apiWebRequest.readyState === 4){
       if(apiWebRequest.status === 200){

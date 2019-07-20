@@ -18,17 +18,17 @@ var debug_last_api_response = {response: "empty"};
 var debug_page_built = false;
 var debug_clips_loaded = false;
 
-function initialize_dystasClipViewer(){ console.log("init");
+function initialize_dystasClipViewer(){
   auth_user_token = sessionStorage.getItem('auth_user_access_bearer_token');
   followedChannels = JSON.parse(localStorage.getItem('dystasClipViewer_followedChannels'));
   api_request_resolved_actions = function(){};
   loadClips();
 }
 
-function loadClips(){ console.log("load clips");
+function loadClips(){
   if(!followedChannels){console.log("failed loading followed channels"); return;}
   var broadcasterId = "0";
-  var num_of_clips = 5;
+  var num_of_clips = 10;
   var end_date = new Date();
   var timespan_days = 7;
   var start_date = new Date(end_date.getTime() - (timespan_days * 24 * 60 * 60 * 1000));
@@ -62,11 +62,9 @@ function loadClips(){ console.log("load clips");
 
 function getClipRating(clip_creation_date, clip_views){
   var clip_age = getDaysSince(clip_creation_date);
-  return (clip_views * ((-Math.tanh((2*clip_age/3)-4)+1)/2));
+  return (Math.round((clip_views * ((-Math.tanh((2*clip_age/3)-4)+1)/2))));
 }
 
 function getDaysSince(date_string){
-  return (Math.round((
-    (new Date().getTime() - new Date(date_string).getTime()) / (24 * 60 * 60 * 1000)
-  ) * 100) / 100);
+  return ((new Date().getTime() - new Date(date_string).getTime()) / (24 * 60 * 60 * 1000));
 }
