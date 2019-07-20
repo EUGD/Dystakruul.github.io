@@ -17,8 +17,7 @@ var debug_last_api_response_remaining_rate_limit = 0;
 function initialize_dystasClipViewer(){
   auth_user_token = sessionStorage.getItem('auth_user_access_bearer_token');
   followedChannels = JSON.parse(localStorage.getItem('dystasClipViewer_followedChannels'));
-  debug_enabled?debug_build_page_from_local_clipdata():
-  loadClips();
+  debug_enabled?debug_build_page_from_local_clipdata():loadClips();
   console.log("clips already loaded?");
   build_page_from_clipdata();
 }
