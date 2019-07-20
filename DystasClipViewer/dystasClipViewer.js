@@ -42,6 +42,7 @@ function loadClips(){
       function(jsondata){
         console.log(jsondata);
         !jsondata.data?function(){iframe_write("empty response")}:null;
+        !clipdata&&(clipdata={});
         clipdata[jsondata.data[0].broadcaster_id] = jsondata.data;
       }
     );
