@@ -62,7 +62,7 @@ function sortClipThumbs(){
   while(unsorted){
     unsorted = false;
     for(s = 1; s < toSort.length; s++){
-      if((toSort[s - 1].getAttribute('clip_rating') + 0) < (toSort[s].getAttribute('clip_rating') + 0)){
+      if(parseInt(toSort[s - 1].getAttribute('clip_rating')) < parseInt(toSort[s].getAttribute('clip_rating'))){
         list_container.insertBefore(toSort[s] , toSort[s - 1]);
         unsorted = true;
         break;
