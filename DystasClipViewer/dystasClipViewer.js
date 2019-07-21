@@ -26,9 +26,16 @@ function initialize_dystasClipViewer(){
 }
 
 function loadClips(){
+  /*
+    TODO:
+    calculate clip rating etc. when loading clips,
+    then write it to clipdata
+    
+  */
+  
   if(!followedChannels){console.log("failed loading followed channels"); return;}
   var broadcasterId = "0";
-  var num_of_clips = 10;
+  var num_of_clips = 20;
   var end_date = new Date();
   var timespan_days = 7;
   var start_date = new Date(end_date.getTime() - (timespan_days * 24 * 60 * 60 * 1000));

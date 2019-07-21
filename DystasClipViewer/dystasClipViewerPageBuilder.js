@@ -50,19 +50,28 @@ function createClipThumbElement(clip_thumbnail_url, clip_embed_url, clip_title, 
   clip_thumb_container.appendChild(clip_link);
   clip_thumb_container.appendChild(clip_thumb_title_container);
   clip_thumb_container.onclick = function(){clip_clicked(broadcaster_id, clip_id);};
-  clip_thumb_container.setAttribute('clip_rating', clip_rating);
+  
+  //Attributes for sorting
+  clip_thumb_container.setAttribute('rating', clip_rating);
+  clip_thumb_container.setAttribute('broadcaster', broadcaster_id);
+  clip_thumb_container.setAttribute('views', clip_views);
+  clip_thumb_container.setAttribute('date', new Date(clip_date).getTime());
+  
   return clip_thumb_container;
 }
 
-function sortClipThumbs(){
+function sortClipThumbs(sorting_attribute){
   var list_container = document.getElementById('clip-thumbs');
   var toSort = list_container.getElementsByClassName('clip-thumb-container');
+  if(!sorting_attribute || typeof sorting_attribute === 'undefined'){
+    sorting_attribute = 'clip_rating';
+  }
   var unsorted = true;
   var tmp_clp;
   while(unsorted){
     unsorted = false;
     for(s = 1; s < toSort.length; s++){
-      if(parseInt(toSort[s - 1].getAttribute('clip_rating')) < parseInt(toSort[s].getAttribute('clip_rating'))){
+      if(parseInt(toSort[s - 1].getAttribute(sorting_attribute)) < parseInt(toSort[s].getAttribute(sorting_attribute))){
         list_container.insertBefore(toSort[s] , toSort[s - 1]);
         unsorted = true;
         break;
