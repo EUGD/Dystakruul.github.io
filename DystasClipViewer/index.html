@@ -3,16 +3,35 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style_dcv_dark.css">
+    <link rel="stylesheet" href="style_dcv_dark_dropdowns.css">
     <script onload="dystasClipViewer_AuthenticationCheck();" src="dystasClipViewerAuth.js" charset="utf-8"></script>
     <title>Dystas Clip Viewer</title>
   </head>
   <body>
     <div class="header">
       <div class="header-menu-container">
-        <a href="#1" class="header-menu-link"><div class="header-text-container"><span class="header-text">Menu</span></div></a>
-        <a href="#1" class="header-menu-link"><div class="header-text-container"><span class="header-text">Menu</span></div></a>
-        <a href="#1" class="header-menu-link"><div class="header-text-container"><span class="header-text">Menu</span></div></a>
-        <a href="#1" class="header-menu-link-right"><div class="header-text-container-right"><span class="header-text">Menu</span></div></a>
+        <a href="#home" class="header-menu-link"><div class="header-text-container"><span class="header-text">Home</span></div></a>
+        
+        <div class="dropdown-parent header-menu-link">
+          <a href="#following" class="header-menu-link"><div class="header-text-container"><span class="header-text">Following</span></div></a>
+          <div class="dropdown-submenu">
+            <a href="#show-followed" class="header-menu-link-dropdown-submenu"><div class="header-text-container-submenu"><span class="header-text-submenu">show followed</span></div></a>
+            <a href="#add-follow" class="header-menu-link-dropdown-submenu"><div class="header-text-container-submenu"><span class="header-text-submenu">add follow</span></div></a>
+          </div>
+        </div>
+        
+        <a href="#" class="header-menu-link"><div class="header-text-container"><span class="header-text">Menu</span></div></a>
+        <a href="#about" class="header-menu-link-right"><div class="header-text-container-right"><span class="header-text">About</span></div></a>
+        
+        <div class="dropdown-parent header-menu-link-right">
+          <a target="clip-iframe" href="#sort-default" class="header-menu-link-right"><div class="header-text-container-right"><span class="header-text">Sort Clips</span></div></a>
+          <div class="dropdown-submenu">
+            <a onclick="sortClipThumbs('rating')" href="#sort-by-rating" class="header-menu-link-dropdown-submenu"><div class="header-text-container-submenu"><span class="header-text-submenu">by rating</span></div></a>
+            <a onclick="sortClipThumbs('views')" href="#sort-by-views" class="header-menu-link-dropdown-submenu"><div class="header-text-container-submenu"><span class="header-text-submenu">by views</span></div></a>
+            <a onclick="sortClipThumbs('date')" href="#sort-by-most-recent" class="header-menu-link-dropdown-submenu"><div class="header-text-container-submenu"><span class="header-text-submenu">by most recent</span></div></a>
+            <a onclick="sortClipThumbs('broadcaster')" href="#sort-by-broadcasters" class="header-menu-link-dropdown-submenu"><div class="header-text-container-submenu"><span class="header-text-submenu">by broadcaster</span></div></a>
+          </div>
+        </div>
       </div>
     </div>
     
