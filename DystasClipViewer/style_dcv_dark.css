@@ -150,3 +150,38 @@ a:hover{
   color: white;
   margin: 0;
 }
+
+.dropdown-parent{
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-parent:hover a{
+  padding-bottom: 1em;
+}
+
+.dropdown-submenu{
+  display: none;
+  position: absolute;
+  background: rgba(0,0,0,0.25);
+  margin-top: 2.5em;
+  /*margin-left: -1.5em;
+  padding-inline: 3em;*/
+  padding-block: 0.5em;
+}
+
+.dropdown-parent:hover .dropdown-submenu{
+  display: block;
+}
+
+.header-menu-link-dropdown-submenu{
+}
+
+.header-text-container-submenu{
+  padding-block: 0.25em;
+  padding-block: 0.5em;
+  margin-inline: 1em;
+}
+
+.header-text-submenu{
+}
