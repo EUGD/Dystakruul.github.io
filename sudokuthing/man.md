@@ -2,11 +2,11 @@
 
 ## Overview
 
-- [Overview]()
-- [Input Methods]()
-- [Remembering Sudoku Positions]()
-- [Loading the finished/solved Sheet]()
-- [Changing the Colors]()
+- [Overview](#overview)
+- [Input Methods](#input-methods)
+- [Remembering Sudoku Positions](#remembering-sudoku-positions)
+- [Loading the finished/solved Sheet](#loading-the-finished-solved-sheet)
+- [Changing the Colors](#changing-the-colors)
 
 ## Input Methods
 
