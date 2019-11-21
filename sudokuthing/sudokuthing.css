@@ -1,9 +1,19 @@
+.main-thing{
+  float: left;
+}
+
+.side-thing{
+  float: right;
+}
+
 td{
-  background: #ddd;
+  background: #ccc;
+  width: 1em;
 }
 
 table{
   float: left;
+  border-collapse: collapse;
 }
 
 .sudoku-inputs{
@@ -34,4 +44,15 @@ input{
 
 img{
   max-height: 8em;
+}
+
+.thx-morce{
+  float: right;
+  clear: left;
+}
+
+.save-sudoku-location-button-container{
+  background: grey;
+  display: block;
+  float: left;
 }
