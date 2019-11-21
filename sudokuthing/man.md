@@ -21,7 +21,12 @@ Use the "+" and "-" Keys to select a Sudoku with a higher or lower ID Number
 
 ### WASD
 
-Use the WASD Keys to shift the current sudoku position and to change the X/Y-Offset, similar to Standard movement controls in 3D Videogames
+Use the WASD Keys to shift the current sudoku position and to change the X/Y-Offset, similar to Standard movement controls in 3D Videogames  
+
+  
+
+
+
   
   
 ## Remembering Sudoku Positions
