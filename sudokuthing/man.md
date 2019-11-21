@@ -5,7 +5,7 @@
 - [Overview](#overview)
 - [Input Methods](#input-methods)
 - [Remembering Sudoku Positions](#remembering-sudoku-positions)
-- [Loading the finished/solved Sheet](#loading-the-finished-solved-sheet)
+- [Loading the finished/solved Sheet](#loading-the-finishedsolved-sheet)
 - [Changing the Colors](#changing-the-colors)
 
 ## Input Methods
