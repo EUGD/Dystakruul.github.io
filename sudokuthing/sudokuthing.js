@@ -9,6 +9,14 @@ var sudokuID;
 var invert;
 var rememberedSudokuLocations = [];
 
+var colors = [
+  "#333333",
+  "#eeeeee",
+  "#cccccc",
+  "#eeeeee",
+  "#333333"
+];
+
 //i hate how i wrote this
 function sheetdataLoaded(){sheetdataHasLoaded = true; hasLoaded();}
 function sudokudataLoaded(){sudokudataHasLoaded = true; hasLoaded();}
@@ -31,14 +39,21 @@ function init(){
   };
   document.body.onkeydown = function(e){
     switch(e.which){
-      case 40: offsetY++; break;
-      case 38: offsetY--; break;
-      case 39: offsetX++; break;
-      case 37: offsetX--; break;
+      case 83: case 40: offsetY++; break;
+      case 87: case 38: offsetY--; break;
+      case 68: case 39: offsetX++; break;
+      case 65: case 37: offsetX--; break;
+      case 107: case 171: sudokuID++; break;
+      case 109: case 173: sudokuID--; break;
+      case 26: case 13: rememberCurrentLocation(); break;
+      case 8: case 46: removeLastRememberedLocation(); break;
+      default: break;
     }
-    checkOffsetValues();
+    console.log(e.which);
+    checkModifiedInputValues();
     document.getElementById('sudoku-offset-x-input').value = offsetX;
     document.getElementById('sudoku-offset-y-input').value = offsetY;
+    document.getElementById('sudoku-num-input').value = sudokuID*1+1;
     overlaySudoku();
   }
   updateInputData();
@@ -79,10 +94,29 @@ function clearSheetOverlay(){
   }
 }
 
+function loadSolvedSheet(){
+  clearRememberedLocations();
+  for(srw = 0; srw < sheetdata.SudokuOrder.length; srw++){
+    for(scl = 0; scl < sheetdata.SudokuOrder[srw].length; scl++){
+      rememberedSudokuLocations.push({
+        "sID": sheetdata.SudokuOrder[srw][scl] - 1,
+        "offX": scl * 9,
+        "offY": srw * 9,
+        "inv": invert
+      });
+    }
+  }
+  sudokuID = 0;
+  offsetX = 0;
+  offsetY = 0;
+  setInputValuesFromVariables();
+  checkModifiedInputValues();
+  overlaySudoku();
+}
+
 function overlaySudoku(){
   clearSheetOverlay();
   updateInputData();
-  document.getElementById('sudoku-image').src="";
   document.getElementById('sudoku-image').src="sudokuimages/sudoku_" + (invert ? "inv_" : "") + pre0(sudokuID) + ".png";
   
   for(r = 0; r < rememberedSudokuLocations.length; r++){
@@ -105,8 +139,8 @@ function drawSudokuOverlay(sID, offX, offY, inv){
   var sudokuToOverlay = sudokudata.raw[sID];
   for(ds_row = 0; ds_row < sudokuToOverlay.length && ds_row + offY < sheet_table.length; ds_row++){
     for(ds_col = 0; ds_col < sudokuToOverlay[ds_row].length && ds_col + offX < sheet_table[ds_row + offY].length; ds_col++){
-      sheet_table[ds_row + offY][ds_col + offX].element.style.background = ((sudokuToOverlay[ds_row][ds_col] > 0)*1 + (inv)*1)%2 ? "#333" : "#eee";
-      sheet_table[ds_row + offY][ds_col + offX].element.style.color = ((sudokuToOverlay[ds_row][ds_col] > 0)*1 + (inv)*1)%2 ? "#eee" : "#333";
+      sheet_table[ds_row + offY][ds_col + offX].element.style.background = ((sudokuToOverlay[ds_row][ds_col] > 0)*1 + (inv)*1)%2 ? colors[0] : colors[1];
+      sheet_table[ds_row + offY][ds_col + offX].element.style.color = ((sudokuToOverlay[ds_row][ds_col] > 0)*1 + (inv)*1)%2 ? colors[3] : colors[4];
     }
   }
 }
@@ -120,6 +154,16 @@ function rememberCurrentLocation(){
   });
 }
 
+function removeLastRememberedLocation(){
+  rememberedSudokuLocations.pop();
+  overlaySudoku();
+}
+
+function clearRememberedLocations(){
+  rememberedSudokuLocations = [];
+  overlaySudoku();
+}
+
 function updateInputData(){
   offsetX = document.getElementById('sudoku-offset-x-input').value*1;
   offsetY = document.getElementById('sudoku-offset-y-input').value*1;
@@ -130,15 +174,61 @@ function updateInputData(){
 function setSudokuOffset(rw, cl){
   offsetX = cl;
   offsetY = rw;
-  checkOffsetValues();
+  checkModifiedInputValues();
   document.getElementById('sudoku-offset-x-input').value = offsetX;
   document.getElementById('sudoku-offset-y-input').value = offsetY;
   overlaySudoku();
 }
 
-function checkOffsetValues(){
+function setInputValuesFromVariables(){
+  document.getElementById('sudoku-offset-x-input').value = offsetX;
+  document.getElementById('sudoku-offset-y-input').value = offsetY;
+  document.getElementById('sudoku-num-input').value = sudokuID*1+1;
+}
+
+function checkModifiedInputValues(){
+  sudokuID = Math.max(Math.min(sudokuID, 26), 0); 
   offsetX = Math.max(Math.min(offsetX, sheet_table[0].length-9), 0);
   offsetY = Math.max(Math.min(offsetY, sheet_table.length-9), 0);
+}
+
+function openColorOptions(){
+  document.getElementById('color-options-button-open').setAttribute("hidden", "hidden");
+  document.getElementById('color-options-input-container').removeAttribute("hidden");
+}
+
+function closeColorOptions(){
+  document.getElementById('color-options-input-container').setAttribute("hidden", "hidden");
+  document.getElementById('color-options-button-open').removeAttribute("hidden");
+}
+
+function updateColors(){
+  colors = [
+    document.getElementById('col-inpt-backgr-active').value,
+    document.getElementById('col-inpt-backgr-inactive').value,
+    document.getElementById('col-inpt-backgr-neutral').value,
+    document.getElementById('col-inpt-col-active').value,
+    document.getElementById('col-inpt-col-inactive').value
+  ];
+  document.getElementById('sheet-table').style.background = colors[2];
+  overlaySudoku();
+}
+
+function defaultColorOptions(){
+  colors = [
+    "#333333",
+    "#eeeeee",
+    "#cccccc",
+    "#eeeeee",
+    "#333333"
+  ];
+  
+  document.getElementById('col-inpt-backgr-active').value = colors[0];
+  document.getElementById('col-inpt-backgr-inactive').value = colors[1];
+  document.getElementById('col-inpt-backgr-neutral').value = colors[2];
+  document.getElementById('col-inpt-col-active').value = colors[3];
+  document.getElementById('col-inpt-col-inactive').value = colors[4];
+  updateColors();
 }
 
 function pre0(s){

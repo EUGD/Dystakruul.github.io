@@ -14,17 +14,28 @@
     </table>
     
     <div class="sudoku-inputs" onchange="overlaySudoku();">
-      sudoku <input id="sudoku-num-input" type="number" value="1" min="1" max="27">
-      x offset: <input id="sudoku-offset-x-input" type="number" value="0" min="0" max="54" step="1">
-      y offset: <input id="sudoku-offset-y-input" type="number" value="0" min="0" max="36" step="1">
+      Sudoku num <input id="sudoku-num-input" type="number" value="1" min="1" max="27">
+      X-Offset: <input id="sudoku-offset-x-input" type="number" value="0" min="0" max="54" step="1">
+      Y-Offset: <input id="sudoku-offset-y-input" type="number" value="0" min="0" max="36" step="1">
       
-      <div id="sudoku-invert-input-container"><input id="sudoku-invert-input" type="checkbox"> invert sudoku</div>
+      <div id="sudoku-invert-input-container"><input id="sudoku-invert-input" type="checkbox"> Invert Sudoku</div>
       <hr>
       <button type="button" name="button" onclick="rememberCurrentLocation();">remember this location</button><br><br>
-      <button type="button" name="button" onclick="">remove last remembered</button><br>
-      <button type="button" name="button" onclick="">clear all remembered</button>
+      <button type="button" name="button" onclick="removeLastRememberedLocation();">remove last remembered</button><br>
+      <button type="button" name="button" onclick="clearRememberedLocations();">clear all remembered</button>
+      <br><br>
+      <button type="button" name="button" onclick="loadSolvedSheet();">load solved sheet</button>
       <hr>
-      <button type="button" name="button">open color options...</button>
+      <button id="color-options-button-open" type="button" name="button" onclick="openColorOptions();">open color options...</button>
+      <div id="color-options-input-container" hidden="hidden" onchange="updateColors();">
+        <input id="col-inpt-backgr-active" type="color" name="" value="#333333"> active background<br>
+        <input id="col-inpt-backgr-inactive" type="color" name="" value="#eeeeee"> inactive background<br>
+        <input id="col-inpt-backgr-neutral" type="color" name="" value="#cccccc"> neutral background<br>
+        <input id="col-inpt-col-active" type="color" name="" value="#eeeeee"> active font color<br>
+        <input id="col-inpt-col-inactive" type="color" name="" value="#333333"> inactive font color<br>
+        <button type="button" name="button" onclick="defaultColorOptions();">load default colors</button><br><br>
+        <button type="button" name="button" onclick="closeColorOptions();">close color options</button><br>
+      </div>
     </div>
     
     <div class="sudoku-display">
@@ -35,9 +46,13 @@
       Javascript stuff etc. by me, <a href="https://github.com/Dystakruul">Dystakruul</a> (Dystakruul#5438). <br>
       <a href="https://gist.github.com/morcefaster/f1486fc57ca3885db54e5ba513e5ea0b">sheet data</a>
       and <a href="https://gist.github.com/morcefaster/a5a33ee4ea70d4da84f9a3d66c3892e0">sudoku data</a>
-      serialization created by Morce Faster#3777.
-      (Morce's <a href="https://github.com/morcefaster">Github</a>)
+      serialization created by <a href="https://github.com/morcefaster" >Morce Faster</a> (Morce Faster#3777).
     </div>
     
+    <div class="man-container">
+      <a href="https://github.com/Dystakruul/Dystakruul.github.io/blob/master/sudokuthing/man.md#manual--feature-list-for-sudokuthing">
+        go to instruction page / features list
+      </a>
+    </div>
   </body>
 </html>

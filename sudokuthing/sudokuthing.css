@@ -7,13 +7,13 @@
 }
 
 td{
-  background: #ccc;
   width: 1em;
 }
 
 table{
   float: left;
   border-collapse: collapse;
+  background: #ccc;
 }
 
 .sudoku-inputs{
@@ -55,4 +55,14 @@ img{
   background: grey;
   display: block;
   float: left;
+}
+
+#color-options-input-container > input{
+  display: inline;
+}
+
+.man-container{
+  max-width: 50%;
+  clear: left;
+  padding-top: 0.5em;
 }
