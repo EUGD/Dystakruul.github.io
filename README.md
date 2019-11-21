@@ -12,8 +12,7 @@ idk if I'll finish this one
 
 ## Twitch Clip Viewer
 
-## !
-currently, the only way to add streams as clip source is to edit the browser's LocalStorage
+**!!** currently, the only way to add streams as clip source is to edit the browser's LocalStorage **!!**
 
 #### Popularity Rating
 
