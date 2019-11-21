@@ -63,7 +63,7 @@ function overlaySudoku(){
   var sudokuToOverlay = sudokudata.raw[sudokuID];
   for(s_row = 0; s_row < sudokuToOverlay.length && s_row + offsetY < sheet_table.length; s_row++){
     for(s_col = 0; s_col < sudokuToOverlay[s_row].length && s_col + offsetX < sheet_table[s_row + offsetY].length; s_col++){
-      sheet_table[s_row + offsetY][s_col + offsetX].element.style.background = ((sudokuToOverlay[s_col][s_row] > 0)*1 + (invert)*1)%2 ? "#333" : "#eee";
+      sheet_table[s_row + offsetY][s_col + offsetX].element.style.background = ((sudokuToOverlay[s_row][s_col] > 0)*1 + (invert)*1)%2 ? "#333" : "#eee";
     }
   }
 }
