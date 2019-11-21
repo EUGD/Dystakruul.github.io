@@ -1,1 +1,1 @@
-## Instruction Page / Feature list
+## Manual / Feature list for [https://dystakruul.github.io/sudokuthing/](SudokuThing) (https://dystakruul.github.io/sudokuthing/)[SudokuThing]
