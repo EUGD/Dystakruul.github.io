@@ -1,5 +1,13 @@
 # Manual / Feature list for [SudokuThing](https://dystakruul.github.io/sudokuthing/)
 
+## Overview
+
+- [Overview]()
+- [Input Methods]()
+- [Remembering Sudoku Positions]()
+- [Loading the finished/solved Sheet]()
+- [Changing the Colors]()
+
 ## Input Methods
 
 #### Input Fields
