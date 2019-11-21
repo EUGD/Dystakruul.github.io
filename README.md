@@ -8,7 +8,9 @@ These Projects are currently online:
 - [SudokuThing](https://dystakruul.github.io/sudokuthing/) [WIP]
 
 ## SudokuThing
-idk if I'll finish this one
+
+this project has gotten kinda big i guess
+bug fixing is optional
 
 ## Twitch Clip Viewer
 
