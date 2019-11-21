@@ -1,1 +1,24 @@
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="sudokuthing.js" onload="hasLoaded();"></script>
+    <script src="sheetdata.js" onload="sheetdataLoaded();"></script>
+    <script src="sudokudata.js" onload="sudokudataLoaded();"></script>
+    <link rel="stylesheet" href="sudokuthing.css">
+    <title>sudokuthing</title>
+  </head>
+  <body onload="bodyLoaded();">
+    <table border="0" id="sheet-table">
+    </table>
+  </body>
+  <div class="sudoku-inputs" onchange="overlaySudoku();">
+    sudoku <input id="sudoku-num-input" type="number" value="1" min="1" max="27">
+    x offset: <input id="sudoku-offset-x-input"type="number" value="0" min="0" max="54">
+    y offset: <input id="sudoku-offset-y-input"type="number" value="0" min="0" max="36">
+    <div id="sudoku-invert-input-container"><input id="sudoku-invert-input" type="checkbox"> invert sudoku</div>
+  </div>
+  <div class="sudoku-display">
+    <img id="sudoku-image" src="sudoku_01.png" alt="no sudoku selected">
+  </div>
+</html>
