@@ -7,12 +7,12 @@ These Projects are currently online:
 - [Twitch Clip Viewer](https://dystakruul.github.io/DystasClipViewer/) [WIP]
 - [SudokuThing](https://dystakruul.github.io/sudokuthing/) [WIP]
 
-##SudokuThing
+## SudokuThing
 idk if I'll finish this one
 
 ## Twitch Clip Viewer
 
-####!
+#### !
 currently, the only way to add streams as clip source is to edit the browser's LocalStorage
 
 #### Popularity Rating
