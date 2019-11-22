@@ -22,7 +22,7 @@ Click on any cell/Character in the sheet and the Offset will automatically be ad
 
 Use the Arrow Keys to shift the current sudoku position and to change the X/Y-Offset
 
-#### +/-
+#### +/- Keys
 
 Use the "+" and "-" Keys to select a Sudoku with a higher or lower ID Number
 (the keys on the Numpad work too!)
