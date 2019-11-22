@@ -9,7 +9,7 @@ These Projects are currently online:
 
 ## SudokuThing
 
-this project has gotten kinda big i guess
+this project has gotten kinda big i guess  
 bug fixing is optional
 
 ## Twitch Clip Viewer
