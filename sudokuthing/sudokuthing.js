@@ -52,15 +52,22 @@ function init(){
       case 16: toggleStepSize(); break;
       default: break;
     }
-    console.log(e.which);
-    checkModifiedInputValues();
-    document.getElementById('sudoku-offset-x-input').value = offsetX;
-    document.getElementById('sudoku-offset-y-input').value = offsetY;
-    document.getElementById('sudoku-num-input').value = sudokuID*1+1;
+    //this is so hacky i hate it
+    if(([83, 87, 68, 65, 107, 109, 26, 8, 16, 40, 38, 39, 37, 171, 173, 13, 46]).includes(e.which*1)){
+      checkModifiedInputValues();
+      document.getElementById('sudoku-offset-x-input').value = offsetX;
+      document.getElementById('sudoku-offset-y-input').value = offsetY;
+      document.getElementById('sudoku-num-input').value = sudokuID*1+1;
+    }
     overlaySudoku();
   }
   updateInputData();
   buildSheetDisplay();
+  if(document.location.hash){
+    console.log("importing from shared link...");
+    importOnLoad(document.location.hash.slice(1));
+  }
+  hasInit = true;
 }
 
 function buildSheetDisplay(){
@@ -160,6 +167,7 @@ function removeLastRememberedLocation(){
 
 function clearRememberedLocations(){
   rememberedSudokuLocations = [];
+  document.location.hash = "";
   overlaySudoku();
 }
 
@@ -183,10 +191,23 @@ function importRememberedLocations(){
   }
 }
 
-function importOnLoad(str){
-  rememberedSudokuLocations = JSON.parse(atob(importStr));
+function importOnLoad(impStr){
+  rememberedSudokuLocations = JSON.parse(atob(impStr));
+  console.log("successfully imported from shared link");
   hideSelectedSudoku();
   overlaySudoku();
+}
+
+function showShareLink(){
+  if(rememberedSudokuLocations.length){
+    var exportStr = btoa(JSON.stringify(rememberedSudokuLocations));
+    prompt(
+      "Share your currently saved/remembered sudoku positions with this link:",
+      "https://dystakruul.github.io/sudokuthing/#" + exportStr
+    );
+  }else{
+    alert("There are no saved locationsto share :(");
+  }
 }
 
 function updateInputData(){
