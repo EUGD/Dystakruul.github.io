@@ -23,14 +23,18 @@ table{
 }
 
 input{
-  display: block;
+  display: block; 
 }
 
-#sudoku-invert-input{
+input:invalid {
+  box-shadow: none;
+}
+
+.sudoku-input-checkbox{
   display: inline;
 }
 
-#sudoku-invert-input-container{
+#sudoku-input-checkbox-container{
   margin-left: -0.25em;
   margin-top: 0.25em;
 }
