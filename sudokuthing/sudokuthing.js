@@ -9,6 +9,8 @@ var sudokuID;
 var invert;
 var rememberedSudokuLocations = [];
 
+var offsetStepSize9;
+
 var colors = [
   "#333333",
   "#eeeeee",
@@ -39,14 +41,15 @@ function init(){
   };
   document.body.onkeydown = function(e){
     switch(e.which){
-      case 83: case 40: offsetY++; break;
-      case 87: case 38: offsetY--; break;
-      case 68: case 39: offsetX++; break;
-      case 65: case 37: offsetX--; break;
+      case 83: case 40: offsetY+=(offsetStepSize9 ? 9 : 1); break;
+      case 87: case 38: offsetY-=(offsetStepSize9 ? 9 : 1); break;
+      case 68: case 39: offsetX+=(offsetStepSize9 ? 9 : 1); break;
+      case 65: case 37: offsetX-=(offsetStepSize9 ? 9 : 1); break;
       case 107: case 171: sudokuID++; break;
       case 109: case 173: sudokuID--; break;
       case 26: case 13: rememberCurrentLocation(); break;
       case 8: case 46: removeLastRememberedLocation(); break;
+      case 16: toggleStepSize(); break;
       default: break;
     }
     console.log(e.which);
@@ -106,11 +109,7 @@ function loadSolvedSheet(){
       });
     }
   }
-  sudokuID = 0;
-  offsetX = 0;
-  offsetY = 0;
-  setInputValuesFromVariables();
-  checkModifiedInputValues();
+  hideSelectedSudoku();
   overlaySudoku();
 }
 
@@ -164,11 +163,38 @@ function clearRememberedLocations(){
   overlaySudoku();
 }
 
+function exportRememberedLocations(){
+  if(rememberedSudokuLocations.length){
+    var exportStr = btoa(JSON.stringify(rememberedSudokuLocations));
+    prompt("please copy this import/export string", exportStr);
+  }else{
+    alert("There are no locations saved that could be exported.");
+  }
+}
+
+function importRememberedLocations(){
+  var importStr = prompt("please enter the import/export string");
+  if(importStr){
+    rememberedSudokuLocations = JSON.parse(atob(importStr));
+    hideSelectedSudoku();
+    overlaySudoku();
+  }else{
+    alert("invalid import/export string");
+  }
+}
+
+function importOnLoad(str){
+  rememberedSudokuLocations = JSON.parse(atob(importStr));
+  hideSelectedSudoku();
+  overlaySudoku();
+}
+
 function updateInputData(){
   offsetX = document.getElementById('sudoku-offset-x-input').value*1;
   offsetY = document.getElementById('sudoku-offset-y-input').value*1;
   sudokuID = document.getElementById('sudoku-num-input').value*1-1;
   invert = document.getElementById('sudoku-invert-input').checked;
+  offsetStepSize9 = document.getElementById('sudoku-offset-jump-input').checked
 }
 
 function setSudokuOffset(rw, cl){
@@ -190,6 +216,22 @@ function checkModifiedInputValues(){
   sudokuID = Math.max(Math.min(sudokuID, 26), 0); 
   offsetX = Math.max(Math.min(offsetX, sheet_table[0].length-9), 0);
   offsetY = Math.max(Math.min(offsetY, sheet_table.length-9), 0);
+}
+
+function toggleStepSize(){
+  setOffsetJump(!offsetStepSize9);
+}
+
+function setOffsetJump(isJumpEnabled){
+  offsetStepSize9 = isJumpEnabled;
+  document.getElementById('sudoku-offset-jump-input').checked = offsetStepSize9;
+  if(isJumpEnabled){
+    document.getElementById('sudoku-offset-x-input').step = "9";
+    document.getElementById('sudoku-offset-y-input').step = "9";
+  }else{
+    document.getElementById('sudoku-offset-x-input').step = "1";
+    document.getElementById('sudoku-offset-y-input').step = "1";
+  }
 }
 
 function openColorOptions(){
@@ -231,9 +273,43 @@ function defaultColorOptions(){
   updateColors();
 }
 
+function readabilityPresetColors(){
+  colors = [
+    "#000000",
+    "#eeeeee",
+    "#cccccc",
+    "#000000",
+    "#000000"
+  ];
+  
+  document.getElementById('col-inpt-backgr-active').value = colors[0];
+  document.getElementById('col-inpt-backgr-inactive').value = colors[1];
+  document.getElementById('col-inpt-backgr-neutral').value = colors[2];
+  document.getElementById('col-inpt-col-active').value = colors[3];
+  document.getElementById('col-inpt-col-inactive').value = colors[4];
+  updateColors();
+}
+
+function hideSelectedSudoku(){
+  if(rememberedSudokuLocations.length){
+    offsetX = rememberedSudokuLocations[0].offX;
+    offsetY = rememberedSudokuLocations[0].offY;
+    sudokuID = rememberedSudokuLocations[0].sID;
+    invert = rememberedSudokuLocations[0].inv;
+    setInputValuesFromVariables();
+  }else{
+    console.log("There's nowhere to hide!");
+  }
+}
+
 function pre0(s){
   while((""+s).length < 2){
     s = "0" + s;
   }
   return s;
 }
+
+/*===============================================================
+ PS:
+  I know this code is a fucking mess, you don't need to tell me
+===============================================================*/
