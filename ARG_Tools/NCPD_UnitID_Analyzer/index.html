@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>UnitID Analyzer</title>
+    <script src="unitID_analyze.js" charset="utf-8"></script>
+    <script src="ncpd_unit_ids.js" charset="utf-8" onload="start();"></script>
+  </head>
+  <body style="font-family:monospace">
+    no need for html. <br>
+    open your browser's console. <br><br>
+    use these: <br>
+    &nbsp;sortAndPrintAnalyzedUnitIDsByKeyID(keyID) <br>
+    &nbsp;getSortedCharCount() <br><br>
+    keyIDs: <br>
+    &nbsp;0: "id" <br>
+    &nbsp;1: "chars" <br>
+    &nbsp;2: "nums" <br>
+    &nbsp;3: "charRatio" <br>
+    &nbsp;4: "numRatio" <br><br>
+    If you're interested, take a look at these variables: <br>
+    &nbsp;analyzedUnitIDs <br>
+    &nbsp;charCount<br><br><br>
+    Oh, in case you wanna know, I got the unitIDs by doing this on netwatch-ncpd.com: <br><br>
+    &nbsp;Array.from(document.getElementsByClassName("unit-item__content")).forEach(u => console.log(u.children[1].innerHTML))<br><br><br><br>
+    I know how to html and css, I chose not to use it.
+  </body>
+</html>
