@@ -1,4 +1,5 @@
 var unitIDs = {
+  "version": 1,
   "unit_ids" : [
     "6KOT-ROSZ-SWNA-ELW1",
     "25ZP-G8VG-8N0D-IIXZ",
