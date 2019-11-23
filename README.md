@@ -1,6 +1,6 @@
 # Dystakruul.github.io
 
-This is a playground for web-applications and other web-API-tests.
+This is a playground for small browser-based Tools, web-applications, and other web-API-tests.
 
 These Projects are currently online:
 
