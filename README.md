@@ -10,7 +10,7 @@ These Projects are currently online:
 
 ## ARG Tools
 
-A collection of Tools I wrote and used while working on ARGs that I wanted to share with others
+A collection of Tools I created and used while working on ARGs that I wanted to share with others
 
 ## Twitch Clip Viewer
 
