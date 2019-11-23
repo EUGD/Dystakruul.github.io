@@ -5,12 +5,11 @@ This is a playground for web-applications and other web-API-tests.
 These Projects are currently online:
 
 - [Twitch Clip Viewer](https://dystakruul.github.io/DystasClipViewer/) [WIP]
-- [SudokuThing](https://dystakruul.github.io/sudokuthing/) [WIP]
+- [ARG Tools](https://dystakruul.github.io/ARG_Tools/)
 
-## SudokuThing
+## ARG Tools
 
-this project has gotten kinda big i guess  
-bug fixing is optional
+A collection of Tools I wrote and used while working on ARGs that I wanted to share with others
 
 ## Twitch Clip Viewer
 
