@@ -4,7 +4,7 @@ var charCount = {};
 function start(){
   console.log("creating UnitID data...");
   var uIDs = unitIDs.unit_ids;
-  let nums, chars;
+  let nums, chars, charRatio, numRatio;
   for(i = 0; i < uIDs.length; i++){
     chars = uIDs[i].replace(/[0-9]|-/g, "").length;
     nums = uIDs[i].replace(/[A-Z]|-/g, "").length;
