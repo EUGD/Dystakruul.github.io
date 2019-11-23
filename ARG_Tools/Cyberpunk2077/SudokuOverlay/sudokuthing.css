@@ -1,0 +1,72 @@
+.main-thing{
+  float: left;
+}
+
+.side-thing{
+  float: right;
+}
+
+td{
+  width: 1em;
+}
+
+table{
+  float: left;
+  border-collapse: collapse;
+  background: #ccc;
+}
+
+.sudoku-inputs{
+  display: block;
+  float: left;
+  padding-left: 2em;
+}
+
+input{
+  display: block; 
+}
+
+input:invalid {
+  box-shadow: none;
+}
+
+.sudoku-input-checkbox{
+  display: inline;
+}
+
+#sudoku-input-checkbox-container{
+  margin-left: -0.25em;
+  margin-top: 0.25em;
+}
+
+.sudoku-display{
+  float: left;
+  padding: 5px;
+  margin-left: 1em;
+  background: #888;
+}
+
+img{
+  max-height: 8em;
+}
+
+.thx-morce{
+  float: right;
+  clear: left;
+}
+
+.save-sudoku-location-button-container{
+  background: grey;
+  display: block;
+  float: left;
+}
+
+#color-options-input-container > input{
+  display: inline;
+}
+
+.man-container{
+  max-width: 50%;
+  clear: left;
+  padding-top: 0.5em;
+}
