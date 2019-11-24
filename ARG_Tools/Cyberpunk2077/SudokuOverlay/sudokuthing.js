@@ -203,7 +203,7 @@ function showShareLink(){
     var exportStr = btoa(JSON.stringify(rememberedSudokuLocations));
     prompt(
       "Share your currently saved/remembered sudoku positions with this link:",
-      "https://dystakruul.github.io/sudokuthing/#" + exportStr
+      "https://dystakruul.github.io/ARG_Tools/Cyberpunk2077/SudokuOverlay/#" + exportStr
     );
   }else{
     alert("There are no saved locationsto share :(");
