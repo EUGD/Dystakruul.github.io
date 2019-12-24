@@ -11,7 +11,7 @@ function solveClockCode(str){
   console.log(numstringAsNumbers);
   let addedNumberArrays = strAsNumbers.map((n, i) => +n + numstringAsNumbers[i]);
   let sumAsString = numbersToString(addedNumberArrays);
-  document.getElementById('clock-output').innerHTML = sumAsString + "<br>" + document.getElementById('clock-output').innerHTML;
+  document.getElementById('clock-output').innerHTML += "<br>" + sumAsString;
   return sumAsString;
 }
 
