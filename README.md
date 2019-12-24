@@ -7,7 +7,7 @@ These Projects are currently online:
 - [Twitch Clip Viewer](https://dystakruul.github.io/DystasClipViewer/) [WIP]
 - [ARG Tools](https://dystakruul.github.io/ARG_Tools/)
   - [SudokuOverlay](https://dystakruul.github.io/ARG_Tools/Cyberpunk2077/SudokuOverlay/)
-  - [SudokuOverlay](https://dystakruul.github.io/ARG_Tools/Cyberpunk2077/ClockCodeSolver/)
+  - [ClockCodeSolver](https://dystakruul.github.io/ARG_Tools/Cyberpunk2077/ClockCodeSolver/)
 
 ## ARG Tools
 
