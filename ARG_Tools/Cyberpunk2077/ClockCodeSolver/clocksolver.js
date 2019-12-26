@@ -5,11 +5,7 @@ function solveClockCode(str){
   str = str || "YQSZUPJWKJYYEMMLVWOCVGSCWHCZMJOGBDKRSTXTSCOUQPQJSDK";
   let strAsNumbers = stringToNumbers(str);
   let numstringAsNumbers = stringToNumbers(getNumstring(str.length));
-  console.log(str);
-  console.log(getNumstring(str.length));
-  console.log(strAsNumbers);
-  console.log(numstringAsNumbers);
-  let addedNumberArrays = strAsNumbers.map((n, i) => +n + numstringAsNumbers[i]);
+  let addedNumberArrays = strAsNumbers.map((n, i) => +n + numstringAsNumbers[i]*1);
   let sumAsString = numbersToString(addedNumberArrays);
   document.getElementById('clock-output').innerHTML += "<br>" + sumAsString;
   return sumAsString;
