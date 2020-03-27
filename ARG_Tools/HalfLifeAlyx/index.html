@@ -3,11 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title>HLA soundlog prettifier tool</title>
-    <script src="soundLogPrettifier.js" charset="utf-8"></script>
+    <script src="hla_console_soundlog_prettify.js" charset="utf-8"></script>
   </head>
   <body onload="init();">
     <textarea id="input" placeholder="paste from HLA log" rows="8" cols="80"></textarea>
     <br><button type="button" onclick="prettify();">prettify!</button><br>
     <textarea id="output" readonly placeholder="pretty output" rows="8" cols="80"></textarea>
+    <br> when you're prettifying radio audio logs, there will be some abbreviations: <br>
+    &amp;[NUMBER] => radio_male_number_station_and_[NUMBER].vsnd <br>
+    TL[NUMBER] => radio_number_station_terminator_low_01_[NUMBER].vsnd <br>
+    TS[NUMBER] => radio_number_station_terminator_synthy_[NUMBER].vsnd <br>
+    CL[NUMBER] => radio_number_station_connector_low_01_[NUMBER].vsnd <br>
   </body>
 </html>
