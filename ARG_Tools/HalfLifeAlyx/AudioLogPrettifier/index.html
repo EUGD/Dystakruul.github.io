@@ -3,18 +3,25 @@
   <head>
     <meta charset="utf-8">
     <title>HLA soundlog prettifier tool</title>
-    <script src="hla_console_soundlog_prettify.js" charset="utf-8"></script>
+    <script src="audioLogPrettifier.js" charset="utf-8"></script>
   </head>
   <body onload="init();">
     <div style="float:right">
-      <a href="https://github.com/Dystakruul/Dystakruul.github.io/tree/master/ARG_Tools/HalfLifeAlyx/AudioLogPrettifier">source on github</a> <br>
+      <a href="#">source on github</a> <br>
       <sub><sup>by Dystakruul</sup></sub>
     </div>
-    <textarea id="input" placeholder="paste from HLA log (audio events only. remember to set logging filter!)" rows="8" cols="80"></textarea>
-    <br><button type="button" onclick="prettify();">prettify!</button><br>
+    <textarea id="input" placeholder="paste from HLA log (audio events only. remember to set logging filter!)" rows="8" cols="120"></textarea>
+    <br>
+    <input type="checkbox" id="nolinebreaks"> no linebreaks, comma separated <br>
+    <input type="checkbox" id="radiotag"> mark radio audio with [RADIO] <br>
+    <input type="checkbox" id="forceuppercase" checked> force uppercase <br>
+    <input type="checkbox" id="printalphanum" checked> print alphanumeric <br>
+    <input type="checkbox" id="printspecial" checked> print non-alphanumeric <br>
+    <button type="button" onclick="prettify();">prettify!</button>
+    <br>
     <textarea id="output" readonly placeholder="pretty output" rows="8" cols="80"></textarea>
     <br> when you're prettifying radio audio logs, there will be some abbreviations: <br>
-    &amp;[NUMBER] => radio_male_number_station_and_[NUMBER].vsnd <br>
+    &nbsp;&nbsp;&amp;[NUMBER] => radio_male_number_station_and_[NUMBER].vsnd <br>
     TL[NUMBER] => radio_number_station_terminator_low_01_[NUMBER].vsnd <br>
     TS[NUMBER] => radio_number_station_terminator_synthy_[NUMBER].vsnd <br>
     CL[NUMBER] => radio_number_station_connector_low_01_[NUMBER].vsnd <br>
